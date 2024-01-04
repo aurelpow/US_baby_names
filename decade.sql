@@ -4,6 +4,7 @@
  ( SELECT *,
   		(CAST((year /10) AS INT) * 10 ) AS Decade_start 
   FROM NationalNames
+  where year >= 1940 
   ),
 decade_query AS 
 ( SELECT Decade_start, 
