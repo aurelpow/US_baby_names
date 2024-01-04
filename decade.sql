@@ -12,7 +12,7 @@ decade_query AS
         gender,
  		SUM(COUNT) AS count_names
  	FROM decade_add
- 	GROUP BY 1,2,3
+ 	GROUP BY 1,2,3,4
  	ORDER BY Decade_start DESC , 5 DESC 
  )
 SELECT *, 
