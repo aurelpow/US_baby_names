@@ -11,5 +11,6 @@ GROUP BY 1,2,3
 ORDER BY 4 DESC )
 -- After that we use the CTE created above to have the rank : 
 SELECT *, 
-RANK() OVER(PARTITION BY year ORDER BY total_by_year DESC ) AS rank_year
+		RANK() OVER(PARTITION BY year,gender ORDER BY total_by_year DESC ) AS rank_year_gender,
+		RANK() OVER(PARTITION BY year ORDER BY total_by_year DESC ) AS rank_year
 FROM total_years

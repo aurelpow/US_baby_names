@@ -16,6 +16,11 @@ decade_query AS
  	GROUP BY 1,2,3,4
  	ORDER BY Decade_start DESC , 5 DESC 
  )
-SELECT *, 
-RANK() OVER(PARTITION BY Decade ORDER BY count_names DESC ) AS rank_decade
-FROM decade_query 
+ SELECT q.Decade_start,
+ 		q.Decade,
+        q.Name,
+        q.gender,
+        q.count_names,
+		RANK() OVER(PARTITION BY q.Decade, q.gender ORDER BY q.count_names DESC ) AS rank_decade_gender,
+		RANK() OVER(PARTITION BY q.Decade ORDER BY q.count_names DESC ) AS rank_decade
+FROM decade_query q
